@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "FilLinked",
+    "slug": "fillinked",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1B4FD8"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "ph.fillinked.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1B4FD8"
+      },
+      "package": "ph.fillinked.app"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "scheme": "fillinked",
+    "plugins": [
+      "expo-notifications",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
+    }
+  }
+}

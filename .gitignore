@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.expo/
+.expo-shared/
+web-build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# React Native / Expo
+.expo/
+__generated__/
+ios/
+android/
+
+# Supabase
+supabase/.branches
+supabase/.temp
+
+# TypeScript
+*.tsbuildinfo

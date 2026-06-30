@@ -1,0 +1,17 @@
+{
+  "name": "fillinked",
+  "private": true,
+  "workspaces": [
+    "apps/mobile",
+    "apps/web",
+    "api"
+  ],
+  "scripts": {
+    "api": "npm run dev --workspace=api",
+    "mobile": "npm run start --workspace=apps/mobile",
+    "web": "npm run dev --workspace=apps/web"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

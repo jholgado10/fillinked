@@ -1,0 +1,40 @@
+{
+  "common": {
+    "continue": "Magpatuloy",
+    "skip": "Laktawan muna",
+    "cancel": "Kanselahin",
+    "save": "I-save",
+    "loading": "Naglo-load…",
+    "error": "May nangyaring mali"
+  },
+  "auth": {
+    "title": "FilLinked",
+    "subtitle": "Ang iyong propesyonal na network para sa mga Pilipinong healthcare worker",
+    "emailPlaceholder": "Ilagay ang iyong email",
+    "continueEmail": "Magpatuloy sa Email",
+    "magicLinkSent": "Tingnan ang iyong email",
+    "magicLinkBody": "Nagpadala kami ng magic link sa {{email}}"
+  },
+  "onboarding": {
+    "memberType": "Maligayang pagdating sa FilLinked",
+    "worker": "Pilipinong Healthcare Worker",
+    "employer": "Naghahanap ng empleyado",
+    "basicInfo": "Ibahagi ang tungkol sa iyong sarili",
+    "fullName": "Buong pangalan",
+    "city": "Lungsod",
+    "yourRole": "Ang iyong papel",
+    "headline": "Headline"
+  },
+  "profile": {
+    "editProfile": "I-edit ang profile",
+    "openToWork": "Bukas sa trabaho",
+    "addLicense": "Magdagdag ng lisensya",
+    "addCertification": "Magdagdag ng sertipikasyon",
+    "verifiedBadge": "Na-verify"
+  },
+  "feed": {
+    "licenseVerified": "Na-verify ng FilLinked ang lisensyang {{licenseType}} ni {{name}}",
+    "endorsement": "I-endorse ni {{from}} si {{name}} para sa {{skill}}",
+    "newConnection": "Nakakonekta na si {{a}} at si {{b}}"
+  }
+}

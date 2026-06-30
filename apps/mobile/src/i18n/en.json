@@ -1,0 +1,40 @@
+{
+  "common": {
+    "continue": "Continue",
+    "skip": "Skip for now",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading…",
+    "error": "Something went wrong"
+  },
+  "auth": {
+    "title": "FilLinked",
+    "subtitle": "Your Filipino healthcare career network",
+    "emailPlaceholder": "Enter your email",
+    "continueEmail": "Continue with Email",
+    "magicLinkSent": "Check your email",
+    "magicLinkBody": "We sent a magic link to {{email}}"
+  },
+  "onboarding": {
+    "memberType": "Welcome to FilLinked",
+    "worker": "A Filipino Healthcare Worker",
+    "employer": "Hiring / Looking for Care",
+    "basicInfo": "Tell us about yourself",
+    "fullName": "Full name",
+    "city": "City",
+    "yourRole": "Your role",
+    "headline": "Headline"
+  },
+  "profile": {
+    "editProfile": "Edit profile",
+    "openToWork": "Open to Work",
+    "addLicense": "Add License",
+    "addCertification": "Add Certification",
+    "verifiedBadge": "Verified"
+  },
+  "feed": {
+    "licenseVerified": "{{name}}'s {{licenseType}} license was verified by FilLinked",
+    "endorsement": "{{from}} endorsed {{name}} for {{skill}}",
+    "newConnection": "{{a}} and {{b}} are now connected"
+  }
+}
