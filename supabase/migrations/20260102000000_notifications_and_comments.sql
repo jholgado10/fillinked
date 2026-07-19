@@ -8,7 +8,7 @@ create type notification_type as enum (
 );
 
 create table notifications (
-  id         uuid primary key default uuid_generate_v4(),
+  id         uuid primary key default extensions.uuid_generate_v4(),
   user_id    uuid not null references users(id) on delete cascade,
   type       notification_type not null,
   title      varchar(200) not null,
@@ -32,7 +32,7 @@ create policy "notifications: insert own" on notifications for insert with check
 -- ============================================================
 
 create table feed_comments (
-  id            uuid primary key default uuid_generate_v4(),
+  id            uuid primary key default extensions.uuid_generate_v4(),
   feed_event_id uuid not null references feed_events(id) on delete cascade,
   author_id     uuid not null references users(id) on delete cascade,
   body          text not null,
