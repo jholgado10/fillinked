@@ -28,6 +28,7 @@ new Worker('expiration-reminder', async () => {
   for (const reminder of reminders ?? []) {
     const days = reminder.reminder_type.replace('_day', '');
     await send(reminder.user_id, {
+      type: 'license_expiring',
       title: `Credential expiring in ${days} days`,
       body: 'Renew your credential to keep your Verified badge active.',
       deepLink: 'fillinked://profile/me/credentials',

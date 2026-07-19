@@ -6,9 +6,9 @@ import { logger } from '../lib/logger.js';
 export const pushNotificationQueue = new Queue('push-notification', { connection: redis });
 
 new Worker('push-notification', async (job) => {
-  const { userId, title, body, deepLink } = job.data;
+  const { userId, type, title, body, deepLink } = job.data;
   try {
-    await send(userId, { title, body, deepLink });
+    await send(userId, { type, title, body, deepLink });
   } catch (err) {
     logger.warn({ err, userId }, 'Push notification job failed');
   }

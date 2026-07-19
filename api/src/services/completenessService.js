@@ -16,7 +16,7 @@ const WEIGHTS = {
   id_verified: 10,
 };
 
-export async function computeScore(profileId) {
+async function evaluateCriteria(profileId) {
   const { data: profile } = await supabase
     .from('profiles')
     .select('*')
@@ -45,25 +45,53 @@ export async function computeScore(profileId) {
     .eq('to_user_id', profile.user_id)
     .eq('is_visible', true);
 
-  let score = 0;
-  if (profile.avatar_url) score += WEIGHTS.avatar_url;
-  if (profile.full_name) score += WEIGHTS.full_name;
-  if (profile.location_city) score += WEIGHTS.location_city;
-  if (profile.role_type) score += WEIGHTS.role_type;
-  if (profile.headline) score += WEIGHTS.headline;
-  if ((experiences?.length ?? 0) >= 1) score += WEIGHTS.work_experiences;
-  if ((skills?.length ?? 0) >= 3) score += WEIGHTS.skills_3;
-  if (profile.bio) score += WEIGHTS.bio;
-  if ((licenses?.length ?? 0) >= 1) score += WEIGHTS.license_verified;
-  if ((skills ?? []).filter((s) => s.endorsement_count >= 1).length >= 5) score += WEIGHTS.skills_endorsements_5;
-  if ((recs?.length ?? 0) >= 1) score += WEIGHTS.recommendations;
-  if (profile.npi_number || profile.prc_license_number) score += WEIGHTS.npi_or_prc;
-  if (profile.is_id_verified) score += WEIGHTS.id_verified;
+  return {
+    avatar_url: !!profile.avatar_url,
+    full_name: !!profile.full_name,
+    location_city: !!profile.location_city,
+    role_type: !!profile.role_type,
+    headline: !!profile.headline,
+    work_experiences: (experiences?.length ?? 0) >= 1,
+    skills_3: (skills?.length ?? 0) >= 3,
+    bio: !!profile.bio,
+    license_verified: (licenses?.length ?? 0) >= 1,
+    skills_endorsements_5: (skills ?? []).filter((s) => s.endorsement_count >= 1).length >= 5,
+    recommendations: (recs?.length ?? 0) >= 1,
+    npi_or_prc: !!(profile.npi_number || profile.prc_license_number),
+    id_verified: !!profile.is_id_verified,
+  };
+}
+
+function scoreFromCriteria(criteria) {
+  const score = Object.keys(WEIGHTS).reduce(
+    (total, key) => total + (criteria[key] ? WEIGHTS[key] : 0),
+    0,
+  );
+  return Math.min(score, 100);
+}
+
+export async function computeScore(profileId) {
+  const criteria = await evaluateCriteria(profileId);
+  const score = scoreFromCriteria(criteria);
 
   await supabase
     .from('profiles')
-    .update({ completeness_score: Math.min(score, 100) })
+    .update({ completeness_score: score })
     .eq('id', profileId);
 
-  return Math.min(score, 100);
+  return score;
+}
+
+export async function getCompletenessBreakdown(profileId) {
+  const criteria = await evaluateCriteria(profileId);
+  const score = scoreFromCriteria(criteria);
+
+  const items = Object.entries(WEIGHTS).map(([key, weight]) => ({
+    key,
+    weight,
+    met: criteria[key],
+    points: criteria[key] ? weight : 0,
+  }));
+
+  return { score, items };
 }

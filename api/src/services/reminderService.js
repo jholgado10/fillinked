@@ -8,7 +8,7 @@ const REMINDER_DAYS = {
   specialty: [90, 30],
 };
 
-export async function scheduleReminder(licenseId, expiryDate, licenseType, userId) {
+export async function scheduleReminder(licenseId, expiryDate, licenseType, userId, sourceType = 'license') {
   if (!expiryDate) return;
 
   const expiry = new Date(expiryDate);
@@ -20,7 +20,7 @@ export async function scheduleReminder(licenseId, expiryDate, licenseType, userI
     return {
       user_id: userId,
       license_id: licenseId,
-      source_type: 'license',
+      source_type: sourceType,
       reminder_type: `${d}_day`,
       scheduled_at: scheduledAt.toISOString(),
     };
