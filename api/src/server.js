@@ -1,3 +1,4 @@
+import './lib/env.js';
 import express from 'express';
 import cors from 'cors';
 import { authRateLimit, generalRateLimit } from './middleware/rateLimit.js';

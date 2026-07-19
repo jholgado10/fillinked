@@ -30,6 +30,7 @@ export async function createCheckoutSession(userId, email, planType) {
     customer: customerId,
     line_items: [{ price: priceId, quantity: 1 }],
     mode: 'subscription',
+    subscription_data: { metadata: { user_id: userId, plan_type: planType } },
     success_url: `${process.env.ALLOWED_ORIGINS?.split(',')[0]}/subscription/success`,
     cancel_url: `${process.env.ALLOWED_ORIGINS?.split(',')[0]}/subscription/cancel`,
   });
